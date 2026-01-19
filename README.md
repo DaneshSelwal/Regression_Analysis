@@ -149,4 +149,6 @@ Real-world data often drifts or has temporal dependencies.
 3.  **Run the Pipeline**:
     Execute the notebooks in the order presented in the **Repository Structure** (Hyperparameter Tuning $\rightarrow$ Quantile/Probabilistic $\rightarrow$ Conformal Predictions).
 
+
+ <sup>**</sup>This repository is a collaborative project developed under guidance of Dr. Mahesh Pal by Prakriti Bisht and Danesh Selwal.
 ---
