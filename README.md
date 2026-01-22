@@ -20,6 +20,7 @@ Whether you are analyzing environmental data, financial time-series, or industri
     - [Phase 1: Hyperparameter Tuning](#phase-1-hyperparameter-tuning)
     - [Phase 2: Quantile Regression](#phase-2-quantile-regression)
     - [Phase 3: Probabilistic Distribution](#phase-3-probabilistic-distribution)
+    - [Phase 3b: Probabilistic Distribution (CARD)](#phase-3b-probabilistic-distribution-card)
     - [Phase 4: Standard Conformal Predictions](#phase-4-standard-conformal-predictions)
     - [Phase 5: Adaptive & Non-Exchangeable CP](#phase-5-adaptive--non-exchangeable-cp)
 5. [🚀 Getting Started](#-getting-started)
@@ -34,6 +35,7 @@ This framework provides a rigorous path from raw data to confident predictions. 
 *   **Automated Optimization**: Harnessing **Optuna** for Bayesian optimization of complex regressors.
 *   **Interval Estimation**: **Quantile Regression** for estimating conditional bounds (e.g., 5th and 95th percentiles).
 *   **Full Distribution Modeling**: Using **NGBoost** and **PGBM** to predict the full probability distribution parameters ($\mu, \sigma$).
+*   **Generative Modeling**: Leveraging **CARD (Classification and Regression Diffusion)** models to generate conditional distributions using diffusion processes.
 *   **Robust Uncertainty**: Implementation of **NEXCP (Non-Exchangeable Conformal Prediction)** and **Adaptive CP**, crucial for handling data drift and temporal dependencies where standard methods fail.
 
 ---
@@ -60,6 +62,9 @@ The project is encapsulated within the `Data_folder`, organized by analysis phas
 │   ├── Probabilistic_Distribution/                 # 📊 Phase 3: Distributional Models
 │   │   ├── Probabilistic__Distribution.ipynb       # NGBoost & PGBM implementation
 │   │   └── Results/                                # Calibration plots & CRPS scores
+│   │
+│   ├── Probabilistic_Distribution(CARD)/           # 🌫️ Phase 3b: Diffusion Models (CARD)
+│   │   └── Probabilistic__Distribution(CARD).ipynb # Diffusion-based distribution modeling
 │   │
 │   ├── Conformal_Predictions(MAPIE,PUNCC)/         # 🛡️ Phase 4: Standard CP
 │   │   └── Conformal Predictions(MAPIE,PUNCC).ipynb
@@ -113,6 +118,13 @@ Treating the target as a random variable $Y|X \sim \mathcal{D}(\theta)$.
 *   **Models**: **NGBoost** (Natural Gradient Boosting) and **PGBM** (Probabilistic Gradient Boosting Machines).
 *   **Metrics**: Negative Log-Likelihood (NLL) and Continuous Ranked Probability Score (CRPS).
 *   **Visualization**: Probability Integral Transform (PIT) histograms to verify calibration.
+
+### Phase 3b: Probabilistic Distribution (CARD)
+**Location**: `Data_folder/Probabilistic_Distribution(CARD)`
+Using generative diffusion models to capture complex conditional distributions.
+*   **Models**: **CARD** (Classification and Regression Diffusion).
+*   **Method**: Converts the regression target into a noise distribution and learns to reverse the diffusion process conditioned on features.
+*   **Advantage**: Capable of modeling multi-modal distributions and complex dependencies.
 
 ### Phase 4: Standard Conformal Predictions
 **Location**: `Data_folder/Conformal_Predictions(MAPIE,PUNCC)`
