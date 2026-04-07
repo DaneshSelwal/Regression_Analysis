@@ -2,12 +2,12 @@
 
 ![Python](https://img.shields.io/badge/Python-3.10%2B-blue?style=for-the-badge&logo=python&logoColor=white)
 ![Machine Learning](https://img.shields.io/badge/Machine%20Learning-XGBoost%20%7C%20LightGBM%20%7C%20CatBoost-orange?style=for-the-badge)
-![Uncertainty Quantification](https://img.shields.io/badge/Uncertainty-Adaptive%20CP%20%7C%20NEXCP%20%7C%20Quantile-green?style=for-the-badge)
+![Uncertainty Quantification](https://img.shields.io/badge/Uncertainty-Adaptive%20CP%20%7C%20HCM%20%7C%20Quantile-green?style=for-the-badge)
 ![Status](https://img.shields.io/badge/Status-Active-success?style=for-the-badge)
 
 Welcome to the **End-to-End Regression Analysis Pipeline**. This repository is engineered as a modular, "plug-and-play" framework for robust regression tasks. It goes beyond simple point predictions by integrating a suite of **Uncertainty Quantification (UQ)** methods, ensuring that every prediction is accompanied by a reliable confidence interval.
 
-Whether you are analyzing environmental data, financial time-series, or industrial sensor readings, this pipeline allows you to swap in your dataset and immediately leverage state-of-the-art Hyperparameter Tuning, Quantile Regression, Probabilistic Modeling, and Adaptive Conformal Prediction.
+Whether you are analyzing environmental data, financial time-series, or industrial sensor readings, this pipeline allows you to swap in your dataset and immediately leverage state-of-the-art Hyperparameter Tuning, Quantile Regression, Probabilistic Modeling, Hyperspherical Confidence Mapping, and Adaptive Conformal Prediction.
 
 ---
 
@@ -21,6 +21,7 @@ Whether you are analyzing environmental data, financial time-series, or industri
     - [Phase 2: Quantile Regression](#phase-2-quantile-regression)
     - [Phase 3: Probabilistic Distribution](#phase-3-probabilistic-distribution)
     - [Phase 3b: Probabilistic Distribution (CARD)](#phase-3b-probabilistic-distribution-card)
+    - [Phase 3c: Hyperspherical Confidence Mapping (HCM)](#phase-3c-hyperspherical-confidence-mapping-hcm)
     - [Phase 4: Standard Conformal Predictions](#phase-4-standard-conformal-predictions)
     - [Phase 5: Adaptive & Non-Exchangeable CP](#phase-5-adaptive--non-exchangeable-cp)
 5. [🚀 Getting Started](#-getting-started)
@@ -36,6 +37,7 @@ This framework provides a rigorous path from raw data to confident predictions. 
 *   **Interval Estimation**: **Quantile Regression** for estimating conditional bounds (e.g., 5th and 95th percentiles).
 *   **Full Distribution Modeling**: Using **NGBoost** and **PGBM** to predict the full probability distribution parameters ($\mu, \sigma$).
 *   **Generative Modeling**: Leveraging **CARD (Classification and Regression Diffusion)** models to generate conditional distributions using diffusion processes.
+*   **Geometric Uncertainty**: **Hyperspherical Confidence Mapping (HCM)** for sampling-free, distribution-free uncertainty estimation in regression.
 *   **Robust Uncertainty**: Implementation of **NEXCP (Non-Exchangeable Conformal Prediction)** and **Adaptive CP**, crucial for handling data drift and temporal dependencies where standard methods fail.
 
 ---
@@ -65,6 +67,9 @@ The project is encapsulated within the `Data_folder`, organized by analysis phas
 │   │
 │   ├── Probabilistic_Distribution(CARD)/           # 🌫️ Phase 3b: Diffusion Models (CARD)
 │   │   └── Probabilistic__Distribution(CARD).ipynb # Diffusion-based distribution modeling
+│   │
+│   ├── Hyperspherical_Confidence_Mapping(HCM)/     # 🌐 Phase 3c: Geometric UQ with HCM
+│   │   └── Hyperspherical_Confidence_Mapping(HCM).ipynb
 │   │
 │   ├── Conformal_Predictions(MAPIE,PUNCC)/         # 🛡️ Phase 4: Standard CP
 │   │   └── Conformal Predictions(MAPIE,PUNCC).ipynb
@@ -125,6 +130,13 @@ Using generative diffusion models to capture complex conditional distributions.
 *   **Models**: **CARD** (Classification and Regression Diffusion).
 *   **Method**: Converts the regression target into a noise distribution and learns to reverse the diffusion process conditioned on features.
 *   **Advantage**: Capable of modeling multi-modal distributions and complex dependencies.
+
+### Phase 3c: Hyperspherical Confidence Mapping (HCM)
+**Location**: `Data_folder/Hyperspherical_Confidence_Mapping(HCM)`
+Using a geometric decomposition to estimate regression uncertainty without sampling or a fixed predictive distribution.
+*   **Model**: **HCM** (Hyperspherical Confidence Mapping).
+*   **Method**: Decomposes the regression output into a scalar magnitude $R$ and a direction vector $d$, then measures uncertainty through the violation of the unit-norm hyperspherical constraint.
+*   **Advantage**: Lightweight, deterministic, and designed to stay compatible with the same Google Colab workflow and Excel-style result exports used across the repository.
 
 ### Phase 4: Standard Conformal Predictions
 **Location**: `Data_folder/Conformal_Predictions(MAPIE,PUNCC)`
