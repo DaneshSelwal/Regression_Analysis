@@ -24,6 +24,7 @@ Whether you are analyzing environmental data, financial time-series, or industri
     - [Phase 3c: Hyperspherical Confidence Mapping (HCM)](#phase-3c-hyperspherical-confidence-mapping-hcm)
     - [Phase 4: Standard Conformal Predictions](#phase-4-standard-conformal-predictions)
     - [Phase 5: Adaptive & Non-Exchangeable CP](#phase-5-adaptive--non-exchangeable-cp)
+    - [Phase 5b: Adaptive Coverage Policies (ACP)](#phase-5b-adaptive-coverage-policies-acp)
 5. [🚀 Getting Started](#-getting-started)
 
 ---
@@ -39,6 +40,7 @@ This framework provides a rigorous path from raw data to confident predictions. 
 *   **Generative Modeling**: Leveraging **CARD (Classification and Regression Diffusion)** models to generate conditional distributions using diffusion processes.
 *   **Geometric Uncertainty**: **Hyperspherical Confidence Mapping (HCM)** for sampling-free, distribution-free uncertainty estimation in regression.
 *   **Robust Uncertainty**: Implementation of **NEXCP (Non-Exchangeable Conformal Prediction)** and **Adaptive CP**, crucial for handling data drift and temporal dependencies where standard methods fail.
+*   **Policy-Learned Coverage**: Integration of **Adaptive Coverage Policies (ACP)** to learn data-dependent coverage levels via calibration-aware neural policies.
 
 ---
 
@@ -76,6 +78,9 @@ The project is encapsulated within the `Data_folder`, organized by analysis phas
 │   │
 │   └── Conformal_Predictions(NEXCP,AdaptiveCP,mfcs)/ # 🛡️ Phase 5: Advanced Time-Series CP
 │       └── Conformal_Predictions(NEXCP, Adaptive CP, mfcs).ipynb
+│
+│   └── Conformal_Predictions(AdaptiveCoveragePolicies)/ # 🛡️ Phase 5b: Policy-Learned CP
+│       └── Adaptive_Coverage_Policies(ACP).ipynb
 │
 └── README.md
 ```
@@ -152,6 +157,14 @@ Real-world data often drifts or has temporal dependencies.
 *   **NEXCP**: Non-Exchangeable Conformal Prediction. Weights recent observations more heavily to adapt to distribution shifts.
 *   **Adaptive CP**: Dynamically updates the interval width $C_t$ based on recent coverage errors.
 *   **Result**: Valid coverage even during volatile periods (e.g., market crashes, floods).
+
+### Phase 5b: Adaptive Coverage Policies (ACP)
+**Location**: `Data_folder/Conformal_Predictions(AdaptiveCoveragePolicies)`
+Learns data-dependent conformal coverage through a neural policy over calibration statistics.
+*   **Base Model**: Linear regression backbone for point prediction.
+*   **Policy Model**: `AlphaNet` predicts adaptive miscoverage ($\alpha$) from leave-one-out calibration features.
+*   **Objective**: Minimize interval width while regularizing the learned coverage policy.
+*   **Outputs**: Excel-first reports with training curves, calibration diagnostics, prediction bands, and matrix evaluation.
 
 ---
 
