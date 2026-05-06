@@ -1,16 +1,16 @@
 # 🚀 Comprehensive Regression Analysis Pipeline: Advanced Uncertainty Quantification
 
-![Python](https://img.shields.io/badge/Python-3.10%2B-blue?style=for-the-badge&logo=python&logoColor=white)
-![Machine Learning](https://img.shields.io/badge/Machine%20Learning-XGBoost%20%7C%20LightGBM%20%7C%20CatBoost-orange?style=for-the-badge)
-![Uncertainty Quantification](https://img.shields.io/badge/Uncertainty-Adaptive%20CP%20%7C%20HCM%20%7C%20Quantile-green?style=for-the-badge)
-![Version](https://img.shields.io/badge/Version-1.2-blueviolet?style=for-the-badge)
-![Status](https://img.shields.io/badge/Status-Active-success?style=for-the-badge)
+![Python](https:/img.shields.io/badge/Python-3.10%2B-blue?style=for-the-badge&logo=python&logoColor=white)
+![Machine Learning](https:/img.shields.io/badge/Machine%20Learning-XGBoost%20%7C%20LightGBM%20%7C%20CatBoost-orange?style=for-the-badge)
+![Uncertainty Quantification](https:/img.shields.io/badge/Uncertainty-Adaptive%20CP%20%7C%20HCM%20%7C%20Quantile-green?style=for-the-badge)
+![Version](https:/img.shields.io/badge/Version-1.2-blueviolet?style=for-the-badge)
+![Status](https:/img.shields.io/badge/Status-Active-success?style=for-the-badge)
 
 Welcome to the **End-to-End Regression Analysis Pipeline**. This repository is engineered as a modular, "plug-and-play" framework for robust regression tasks. It goes beyond simple point predictions by integrating a suite of **Uncertainty Quantification (UQ)** methods, ensuring that every prediction is accompanied by a reliable confidence interval.
 
-Whether you are analyzing environmental data, financial time-series, or industrial sensor readings, this pipeline allows you to swap in your dataset and immediately leverage state-of-the-art Hyperparameter Tuning, Quantile Regression, Probabilistic Modeling, Hyperspherical Confidence Mapping, and Adaptive Conformal Prediction.
+Whether you are analyzing environmental data, financial time-series, or industrial sensor readings, this pipeline allows you to swap in your Dataset and immediately leverage state-of-the-art Hyperparameter Tuning, Quantile Regression, Probabilistic Modeling, Hyperspherical Confidence Mapping, and Adaptive Conformal Prediction.
 
-> **Branch Info:** You are viewing the `version1.2` branch. See [`version-1.1`](https://github.com/DaneshSelwal/Regression_Uncertainty_Quantification_Analysis/tree/version-1.1) for the previous release without ACP.
+> **Branch Info:** You are viewing the `version1.2` branch. See [`version-1.1`](https:/github.com/DaneshSelwal/Regression_Uncertainty_Quantification_Analysis/tree/version-1.1) for the previous release without ACP.
 
 ---
 
@@ -19,7 +19,7 @@ Whether you are analyzing environmental data, financial time-series, or industri
 1. [🆕 What's New in v1.2](#-whats-new-in-v12)
 2. [📌 Project Overview](#-project-overview)
 3. [📂 Repository Structure](#-repository-structure)
-4. [📊 Dataset & Usage](#-dataset--usage)
+4. [📊 Dataset & Usage](#-Dataset--usage)
 5. [🛠️ Workflow & Methodology](#-workflow--methodology)
     - [Phase 1: Hyperparameter Tuning](#phase-1-hyperparameter-tuning)
     - [Phase 2: Quantile Regression](#phase-2-quantile-regression)
@@ -93,8 +93,8 @@ To use this repository with your own data:
 3.  **Replace**:
     *   Place your data in the `data/` directory.
 4.  **Configure**:
-    *   **Column Names**: Open the notebooks in `` and ensure the column names match your dataset's target variable and features.
-    *   **File Paths**: When running in Google Colab, paths are automatically handled relative to the `data_folder` root.
+    *   **Column Names**: Open the notebooks in the respective folders and ensure the column names match your Dataset's target variable and features.
+    *   **File Paths**: When running in Google Colab, paths are automatically handled relative to the root directory.
 
 ---
 
@@ -166,7 +166,7 @@ Learns data-dependent conformal coverage through a neural policy over calibratio
 2.  **Install dependencies from the notebook**:
     Run the first cell to install required packages in Colab (for example: !pip install optuna mapie puncc).
 
-3.  **Upload your dataset to Colab runtime storage**:
+3.  **Upload your Dataset to Colab runtime storage**:
     Upload your own 	rain.csv and 	est.csv directly into the active Colab session.
 
 4.  **Update notebook paths for Colab storage**:
