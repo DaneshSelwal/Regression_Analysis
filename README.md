@@ -65,16 +65,16 @@ The project is organized into a clean, professional architecture optimized for G
 
 ```
 .
-├── Data_folder/            # 📦 Main Colab Directory (Upload this to Google Drive)
-│   ├── Data/               # 📊 Raw Datasets (train.csv, test.csv)
-│   ├── HyperParameter_Tuning/
-│   ├── Quantile_Regression/
-│   ├── Probabilistic_Distribution/
-│   ├── Probabilistic_Distribution(CARD)/
-│   ├── Hyperspherical_Confidence_Mapping(HCM)/                 # (Added in v1.1)
-│   ├── Conformal_Predictions(MAPIE,PUNCC)/
-│   ├── Conformal_Predictions(NEXCP,AdaptiveCP,mfcs)/
-│   └── conformal_predictions_adaptive_coverage_policies/       # (Added in v1.2)
+# 📦 Upload these folders to Google Drive
+├── Data/               # 📊 Raw Datasets (train.csv, test.csv)
+├── HyperParameter_Tuning/
+├── Quantile_Regression/
+├── Probabilistic_Distribution/
+├── Probabilistic_Distribution(CARD)/
+├── Hyperspherical_Confidence_Mapping(HCM)/                 # (Added in v1.1)
+├── Conformal_Predictions(MAPIE,PUNCC)/
+├── Conformal_Predictions(NEXCP,AdaptiveCP,mfcs)/
+└── conformal_predictions_adaptive_coverage_policies/       # (Added in v1.2)
 │
 └── README.md               # 🚀 Project Landing Page
 ```
@@ -90,57 +90,57 @@ To use this repository with your own data:
 1.  **Prepare your data**: You need a training set and a testing set.
 2.  **Format**: Ensure your files are in `.csv` format.
 3.  **Replace**:
-    *   Place your data in the `Data_folder/Data/` directory.
+    *   Place your data in the `Data/` directory.
 4.  **Configure**:
-    *   **Column Names**: Open the notebooks in `Data_folder/` and ensure the column names match your dataset's target variable and features.
+    *   **Column Names**: Open the notebooks in `` and ensure the column names match your dataset's target variable and features.
     *   **File Paths**: When running in Google Colab, paths are automatically handled relative to the `Data_folder` root.
 
 ---
 
 ### Phase 1: Hyperparameter Tuning
-**Location**: `Data_folder/HyperParameter_Tuning`
+**Location**: `HyperParameter_Tuning`
 Before any uncertainty quantification, we must ensure our base estimators are accurate.
 *   **Tool**: **Optuna**.
 *   **Process**: We search over hyperparameter spaces for XGBoost, CatBoost, LightGBM, etc., using efficient pruners (Hyperband) to find the best configuration.
 *   **Output**: Optimized model parameters saved for subsequent steps.
 
 ### Phase 2: Quantile Regression
-**Location**: `Data_folder/Quantile_Regression`
+**Location**: `Quantile_Regression`
 We move beyond the mean.
 *   **Goal**: Predict conditional quantiles (e.g., $Q_{0.05}$ and $Q_{0.95}$) to bracket the target value.
 *   **Loss Function**: Pinball Loss.
 *   **Result**: A prediction interval that captures a specified percentage of the data (e.g., 90%).
 
 ### Phase 3: Probabilistic Distribution
-**Location**: `Data_folder/Probabilistic_Distribution`
+**Location**: `Probabilistic_Distribution`
 Treating the target as a random variable $Y|X \sim \mathcal{D}(\theta)$.
 *   **Models**: **NGBoost** (Natural Gradient Boosting) and **PGBM** (Probabilistic Gradient Boosting Machines).
 *   **Metrics**: Negative Log-Likelihood (NLL) and Continuous Ranked Probability Score (CRPS).
 *   **Visualization**: Probability Integral Transform (PIT) histograms to verify calibration.
 
 ### Phase 3b: Probabilistic Distribution (CARD)
-**Location**: `Data_folder/Probabilistic_Distribution(CARD)`
+**Location**: `Probabilistic_Distribution(CARD)`
 Using generative diffusion models to capture complex conditional distributions.
 *   **Models**: **CARD** (Classification and Regression Diffusion).
 *   **Method**: Converts the regression target into a noise distribution and learns to reverse the diffusion process conditioned on features.
 *   **Advantage**: Capable of modeling multi-modal distributions and complex dependencies.
 
 ### Phase 3c: Hyperspherical Confidence Mapping (HCM)
-**Location**: `Data_folder/Hyperspherical_Confidence_Mapping(HCM)`
+**Location**: `Hyperspherical_Confidence_Mapping(HCM)`
 Using a geometric decomposition to estimate regression uncertainty without sampling or a fixed predictive distribution.
 *   **Model**: **HCM** (Hyperspherical Confidence Mapping).
 *   **Method**: Decomposes the regression output into a scalar magnitude $R$ and a direction vector $d$, then measures uncertainty through the violation of the unit-norm hyperspherical constraint.
 *   **Advantage**: Lightweight, deterministic, and designed to stay compatible with the same Google Colab workflow and Excel-style result exports used across the repository.
 
 ### Phase 4: Standard Conformal Predictions
-**Location**: `Data_folder/Conformal_Predictions(MAPIE,PUNCC)`
+**Location**: `Conformal_Predictions(MAPIE,PUNCC)`
 For data that satisfies the **exchangeability** assumption (i.e., order doesn't matter).
 *   **Libraries**: `MAPIE`, `PUNCC`.
 *   **Methods**: Split Conformal, CV+, Jackknife+.
 *   **Guarantee**: Provides marginal coverage guarantees with finite-sample validity.
 
 ### Phase 5: Adaptive & Non-Exchangeable CP
-**Location**: `Data_folder/Conformal_Predictions(NEXCP,AdaptiveCP,mfcs)`
+**Location**: `Conformal_Predictions(NEXCP,AdaptiveCP,mfcs)`
 **Crucial for Time-Series**.
 Real-world data often drifts or has temporal dependencies.
 *   **NEXCP**: Non-Exchangeable Conformal Prediction. Weights recent observations more heavily to adapt to distribution shifts.
@@ -148,7 +148,7 @@ Real-world data often drifts or has temporal dependencies.
 *   **Result**: Valid coverage even during volatile periods (e.g., market crashes, floods).
 
 ### Phase 5b: Adaptive Coverage Policies (ACP)
-**Location**: `Data_folder/conformal_predictions_adaptive_coverage_policies`
+**Location**: `conformal_predictions_adaptive_coverage_policies`
 Learns data-dependent conformal coverage through a neural policy over calibration statistics.
 *   **Base Model**: Linear regression backbone for point prediction.
 *   **Policy Model**: `AlphaNet` predicts adaptive miscoverage ($\alpha$) from leave-one-out calibration features.
