@@ -2,28 +2,45 @@
 
 ![Python](https://img.shields.io/badge/Python-3.10%2B-blue?style=for-the-badge&logo=python&logoColor=white)
 ![Machine Learning](https://img.shields.io/badge/Machine%20Learning-XGBoost%20%7C%20LightGBM%20%7C%20CatBoost-orange?style=for-the-badge)
-![Uncertainty Quantification](https://img.shields.io/badge/Uncertainty-Adaptive%20CP%20%7C%20NEXCP%20%7C%20Quantile-green?style=for-the-badge)
+![Uncertainty Quantification](https://img.shields.io/badge/Uncertainty-Adaptive%20CP%20%7C%20HCM%20%7C%20Quantile-green?style=for-the-badge)
+![Version](https://img.shields.io/badge/Version-1.2-blueviolet?style=for-the-badge)
 ![Status](https://img.shields.io/badge/Status-Active-success?style=for-the-badge)
 
 Welcome to the **End-to-End Regression Analysis Pipeline**. This repository is engineered as a modular, "plug-and-play" framework for robust regression tasks. It goes beyond simple point predictions by integrating a suite of **Uncertainty Quantification (UQ)** methods, ensuring that every prediction is accompanied by a reliable confidence interval.
 
-Whether you are analyzing environmental data, financial time-series, or industrial sensor readings, this pipeline allows you to swap in your dataset and immediately leverage state-of-the-art Hyperparameter Tuning, Quantile Regression, Probabilistic Modeling, and Adaptive Conformal Prediction.
+Whether you are analyzing environmental data, financial time-series, or industrial sensor readings, this pipeline allows you to swap in your dataset and immediately leverage state-of-the-art Hyperparameter Tuning, Quantile Regression, Probabilistic Modeling, Hyperspherical Confidence Mapping, and Adaptive Conformal Prediction.
+
+> **Branch Info:** You are viewing the `version1.2` branch. See [`version-1.1`](https://github.com/DaneshSelwal/Regression_Uncertainty_Quantification_Analysis/tree/version-1.1) for the previous release without ACP.
 
 ---
 
 ## 📑 Table of Contents (Navigation)
 
-1. [📌 Project Overview](#-project-overview)
-2. [📂 Repository Structure](#-repository-structure)
-3. [📊 Dataset & Usage](#-dataset--usage)
-4. [🛠️ Workflow & Methodology](#-workflow--methodology)
+1. [🆕 What's New in v1.2](#-whats-new-in-v12)
+2. [📌 Project Overview](#-project-overview)
+3. [📂 Repository Structure](#-repository-structure)
+4. [📊 Dataset & Usage](#-dataset--usage)
+5. [🛠️ Workflow & Methodology](#-workflow--methodology)
     - [Phase 1: Hyperparameter Tuning](#phase-1-hyperparameter-tuning)
     - [Phase 2: Quantile Regression](#phase-2-quantile-regression)
     - [Phase 3: Probabilistic Distribution](#phase-3-probabilistic-distribution)
     - [Phase 3b: Probabilistic Distribution (CARD)](#phase-3b-probabilistic-distribution-card)
+    - [Phase 3c: Hyperspherical Confidence Mapping (HCM)](#phase-3c-hyperspherical-confidence-mapping-hcm)
     - [Phase 4: Standard Conformal Predictions](#phase-4-standard-conformal-predictions)
     - [Phase 5: Adaptive & Non-Exchangeable CP](#phase-5-adaptive--non-exchangeable-cp)
-5. [🚀 Getting Started](#-getting-started)
+    - [Phase 5b: Adaptive Coverage Policies (ACP)](#phase-5b-adaptive-coverage-policies-acp)
+6. [🚀 Getting Started](#-getting-started)
+
+---
+
+## 🆕 What's New in v1.2
+
+This release adds **Phase 5b — Adaptive Coverage Policies (ACP)**, extending the pipeline with a learned, data-dependent approach to conformal coverage:
+
+*   🧠 **AlphaNet Policy Model** — A neural network that learns per-sample miscoverage rates ($\alpha$) from leave-one-out calibration features, replacing static significance levels.
+*   📊 **Multi-Model Result Exports** — ACP results exported as `.xlsx` files for 9 regressors (XGBoost, LightGBM, CatBoost, NGBoost, PGBM, GPBoost, Gradient Boosting, HGBM, TabNet).
+*   📉 **Training Dynamics Plotting** — Visualisation of loss curves and coverage evolution across training epochs.
+*   🔄 **Multi-Lambda Training** — Sweep over regularisation strengths to find the best width-coverage trade-off.
 
 ---
 
@@ -36,48 +53,35 @@ This framework provides a rigorous path from raw data to confident predictions. 
 *   **Interval Estimation**: **Quantile Regression** for estimating conditional bounds (e.g., 5th and 95th percentiles).
 *   **Full Distribution Modeling**: Using **NGBoost** and **PGBM** to predict the full probability distribution parameters ($\mu, \sigma$).
 *   **Generative Modeling**: Leveraging **CARD (Classification and Regression Diffusion)** models to generate conditional distributions using diffusion processes.
+*   **Geometric Uncertainty**: **Hyperspherical Confidence Mapping (HCM)** for sampling-free, distribution-free uncertainty estimation in regression.
 *   **Robust Uncertainty**: Implementation of **NEXCP (Non-Exchangeable Conformal Prediction)** and **Adaptive CP**, crucial for handling data drift and temporal dependencies where standard methods fail.
+*   **Policy-Learned Coverage**: Integration of **Adaptive Coverage Policies (ACP)** to learn data-dependent coverage levels via calibration-aware neural policies.
 
 ---
 
 ## 📂 Repository Structure
 
-The project is encapsulated within the `Data_folder`, organized by analysis phase.
+The project is organized into a clean, professional architecture optimized for Google Colab:
 
 ```
 .
-├── Data_folder/
-│   ├── Data/                                       # 📍 Input Data (Entry Point)
-│   │   ├── train.csv                               # Training dataset
-│   │   └── test.csv                                # Testing dataset
-│   │
-│   ├── HyperParameter_Tuning/                      # 🎛️ Phase 1: Optimization
-│   │   ├── Optuna_autosampler.ipynb                # Optuna Bayesian Optimization script
-│   │   └── models/                                 # Saved optimized models
-│   │
-│   ├── Quantile_Regression/                        # 📉 Phase 2: Quantile Methods
-│   │   ├── Quantile_Regression.ipynb               # Script for Quantile Regression
-│   │   └── Results/                                # Prediction outputs
-│   │
-│   ├── Probabilistic_Distribution/                 # 📊 Phase 3: Distributional Models
-│   │   ├── Probabilistic__Distribution.ipynb       # NGBoost & PGBM implementation
-│   │   └── Results/                                # Calibration plots & CRPS scores
-│   │
-│   ├── Probabilistic_Distribution(CARD)/           # 🌫️ Phase 3b: Diffusion Models (CARD)
-│   │   └── Probabilistic__Distribution(CARD).ipynb # Diffusion-based distribution modeling
-│   │
-│   ├── Conformal_Predictions(MAPIE,PUNCC)/         # 🛡️ Phase 4: Standard CP
-│   │   └── Conformal Predictions(MAPIE,PUNCC).ipynb
-│   │
-│   └── Conformal_Predictions(NEXCP,AdaptiveCP,mfcs)/ # 🛡️ Phase 5: Advanced Time-Series CP
-│       └── Conformal_Predictions(NEXCP, Adaptive CP, mfcs).ipynb
+├── Data_folder/            # 📦 Main Colab Directory (Upload this to Google Drive)
+│   ├── Data/               # 📊 Raw Datasets (train.csv, test.csv)
+│   ├── HyperParameter_Tuning/
+│   ├── Quantile_Regression/
+│   ├── Probabilistic_Distribution/
+│   ├── Probabilistic_Distribution(CARD)/
+│   ├── Hyperspherical_Confidence_Mapping(HCM)/                 # (Added in v1.1)
+│   ├── Conformal_Predictions(MAPIE,PUNCC)/
+│   ├── Conformal_Predictions(NEXCP,AdaptiveCP,mfcs)/
+│   └── conformal_predictions_adaptive_coverage_policies/       # (Added in v1.2)
 │
-└── README.md
+└── README.md               # 🚀 Project Landing Page
 ```
 
 ---
 
-## 📊 Dataset & Usage
+## 🛠️ Workflow & Methodology
 
 **This is a Template Pipeline.**
 
@@ -86,17 +90,12 @@ To use this repository with your own data:
 1.  **Prepare your data**: You need a training set and a testing set.
 2.  **Format**: Ensure your files are in `.csv` format.
 3.  **Replace**:
-    *   Replace `Data_folder/Data/train.csv` with your training data.
-    *   Replace `Data_folder/Data/test.csv` with your testing data.
+    *   Place your data in the `Data_folder/Data/` directory.
 4.  **Configure**:
-    *   **Column Names**: Open the notebooks (e.g., `Optuna_autosampler.ipynb`) and ensure the column names match your dataset's target variable and features.
-    *   **File Paths**: Some notebooks may contain hardcoded paths (e.g., `/content/drive/MyDrive/...`) from the original Google Colab environment. You must update these paths to point to your local `Data_folder` location.
-
-The default configuration assumes a structure with predictor columns and a target column. Adjust the "Target" variable name in the scripts to match your specific regression problem.
+    *   **Column Names**: Open the notebooks in `Data_folder/` and ensure the column names match your dataset's target variable and features.
+    *   **File Paths**: When running in Google Colab, paths are automatically handled relative to the `Data_folder` root.
 
 ---
-
-## 🛠️ Workflow & Methodology
 
 ### Phase 1: Hyperparameter Tuning
 **Location**: `Data_folder/HyperParameter_Tuning`
@@ -126,6 +125,13 @@ Using generative diffusion models to capture complex conditional distributions.
 *   **Method**: Converts the regression target into a noise distribution and learns to reverse the diffusion process conditioned on features.
 *   **Advantage**: Capable of modeling multi-modal distributions and complex dependencies.
 
+### Phase 3c: Hyperspherical Confidence Mapping (HCM)
+**Location**: `Data_folder/Hyperspherical_Confidence_Mapping(HCM)`
+Using a geometric decomposition to estimate regression uncertainty without sampling or a fixed predictive distribution.
+*   **Model**: **HCM** (Hyperspherical Confidence Mapping).
+*   **Method**: Decomposes the regression output into a scalar magnitude $R$ and a direction vector $d$, then measures uncertainty through the violation of the unit-norm hyperspherical constraint.
+*   **Advantage**: Lightweight, deterministic, and designed to stay compatible with the same Google Colab workflow and Excel-style result exports used across the repository.
+
 ### Phase 4: Standard Conformal Predictions
 **Location**: `Data_folder/Conformal_Predictions(MAPIE,PUNCC)`
 For data that satisfies the **exchangeability** assumption (i.e., order doesn't matter).
@@ -141,26 +147,32 @@ Real-world data often drifts or has temporal dependencies.
 *   **Adaptive CP**: Dynamically updates the interval width $C_t$ based on recent coverage errors.
 *   **Result**: Valid coverage even during volatile periods (e.g., market crashes, floods).
 
+### Phase 5b: Adaptive Coverage Policies (ACP)
+**Location**: `Data_folder/conformal_predictions_adaptive_coverage_policies`
+Learns data-dependent conformal coverage through a neural policy over calibration statistics.
+*   **Base Model**: Linear regression backbone for point prediction.
+*   **Policy Model**: `AlphaNet` predicts adaptive miscoverage ($\alpha$) from leave-one-out calibration features.
+*   **Objective**: Minimize interval width while regularizing the learned coverage policy.
+*   **Outputs**: Excel-first reports with training curves, calibration diagnostics, prediction bands, and matrix evaluation.
+
 ---
 
-## 🚀 Getting Started
+## 🚀 Getting Started (Colab-First)
 
-1.  **Clone the Repository**:
-    ```bash
-    git clone <repo_url>
-    cd <repo_directory>
-    ```
+1.  **Open a notebook in Colab**:
+    Click any .ipynb file in this repository and use the **Open in Colab** button.
 
-2.  **Install Dependencies**:
-    Ensure you have Python 3.10+ and the required libraries:
-    ```bash
-    pip install optuna xgboost lightgbm catboost ngboost pgbm mapie puncc
-    ```
-    *(Note: Check individual notebooks for specific library versions)*
+2.  **Install dependencies from the notebook**:
+    Run the first cell to install required packages in Colab (for example: !pip install optuna mapie puncc).
 
-3.  **Run the Pipeline**:
-    Execute the notebooks in the order presented in the **Repository Structure** (Hyperparameter Tuning $\rightarrow$ Quantile/Probabilistic $\rightarrow$ Conformal Predictions).
+3.  **Upload your dataset to Colab runtime storage**:
+    Upload your own 	rain.csv and 	est.csv directly into the active Colab session.
 
+4.  **Update notebook paths for Colab storage**:
+    Set file paths to Colab runtime locations (for example: /content/train.csv and /content/test.csv).
 
-     <sup>**</sup>This repository is a collaborative project developed under guidance of Dr. Mahesh Pal by Prakriti Bisht and Danesh Selwal.
+5.  **Run notebooks in phase order**:
+    Execute notebooks following the **Repository Structure** sequence (Hyperparameter Tuning $\rightarrow$ Quantile/Probabilistic $\rightarrow$ Conformal Predictions).
 ---
+
+<sub>This repository is a collaborative project developed under the guidance of Dr. Mahesh Pal by Prakriti Bisht and Danesh Selwal.</sub>
