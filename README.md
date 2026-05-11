@@ -180,17 +180,28 @@ This project leverages state-of-the-art research in Uncertainty Quantification. 
 *   **NEXCP (Non-Exchangeable Conformal Prediction)**: Barber, R. F., Candes, E. J., Ramdas, A., & Tibshirani, R. J. (2023). *Conformal prediction beyond exchangeability*. [Local PDF](resources/NEXCP_beyond_exchangeability.pdf) | [ArXiv](https://arxiv.org/abs/2202.13415)
 *   **Adaptive Conformal Prediction**: Gibbs, I., & Candes, E. (2021). *Adaptive conformal inference under distribution shift*. [Local PDF](resources/Adaptive_Conformal_Inference.pdf) | [ArXiv](https://arxiv.org/abs/2106.01682)
 *   **Conformal Prediction Tutorial**: Angelopoulos, A. N., & Bates, S. (2021). *A Gentle Introduction to Conformal Prediction and Distribution-Free Uncertainty Quantification*. [Local PDF](resources/Gentle_Intro_to_Conformal_Prediction.pdf) | [ArXiv](https://arxiv.org/abs/2107.07511)
+*   **Adaptive Coverage Policies (ACP)**: *Adaptive Coverage Policies in Conformal Prediction*. [ArXiv](https://arxiv.org/pdf/2510.04318)
+*   **Extreme Conformal Prediction**: [ArXiv](https://arxiv.org/pdf/2505.08578)
+*   **IBUG (Instant Bootstrapping for Uncertainty Guidelines)**: [NeurIPS 2022 Paper](https://papers.nips.cc/paper_files/paper/2022/file/48088756ec0ce6ba362bddc7ebeb3915-Paper-Conference.pdf)
+*   **HCM (Hyperspherical Confidence Mapping)**: [OpenReview](https://openreview.net/attachment?id=G4JYxxI23T&name=pdf)
 
 ### 🛠️ Libraries & Frameworks
 *   **MAPIE**: Model Agnostic Prediction Interval Estimator. [GitHub](https://github.com/scikit-learn-contrib/MAPIE)
-*   **PUNCC**: Predictive UNCertainty Calibration and Conformalization. [GitHub](https://github.com/deel-ai/puncc)
+*   **PUNCC**: Predictive UNCertainty Calibration and Conformalization. [GitHub](https://github.com/deel-ai/puncc) | [Classification Docs](https://deel-ai.github.io/puncc/classification.html)
 *   **Adaptive Coverage Policies (ACP)**: [GitHub](https://github.com/GauthierE/adaptive-coverage-policies)
 *   **HCM (Hyperspherical Confidence Mapping)**: [GitHub](https://github.com/Abandoned-Puppy/HCM)
+*   **COP (Conformal Optimistic Prediction)**: [GitHub](https://github.com/creator-xi/Conformal-Optimistic-Prediction)
 *   **Optuna**: Bayesian Hyperparameter Optimization. [Website](https://optuna.org/)
+    *   **AutoSampler**: Automatic Selection of Optimization Algorithms. [Medium Article](https://medium.com/optuna/autosampler-automatic-selection-of-optimization-algorithms-in-optuna-1443875fd8f9) | [Docs](https://optuna.readthedocs.io/en/stable/index.html)
 *   **NGBoost**: Natural Gradient Boosting for Probabilistic Prediction. [Project Page](https://stanfordmlgroup.github.io/projects/ngboost/)
 *   **PGBM**: Probabilistic Gradient Boosting Machines. [GitHub](https://github.com/elephaint/pgbm)
-*   **Treeffuser / CARD**: Generative Diffusion for Regression. [GitHub](https://github.com/blei-lab/treeffuser)
+*   **Treeffuser / CARD**: Generative Diffusion for Regression. [GitHub](https://github.com/blei-lab/treeffuser/blob/main/src/treeffuser/treeffuser.py)
 *   **IBUG**: Instant Bootstrapping for Uncertainty Guidelines. [GitHub](https://github.com/jjbrophy47/ibug)
+*   **Uncertainty Toolbox**: [GitHub](https://github.com/uncertainty-toolbox/uncertainty-toolbox) | [Alternative Repo](https://github.com/sandordaroczi/uncertainty-estimation)
+*   **LIME**: Local Interpretable Model-agnostic Explanations. [GitHub](https://github.com/marcotcr/lime)
+*   **SHAP**: SHapley Additive exPlanations. [GitHub](https://github.com/shap/shap)
+*   **Conformal Prediction Codebases**: [Angelopoulos](https://github.com/aangelopoulos/conformal-prediction) | [GCastro](https://github.com/gcastro-98/conformal-prediction/tree/main)
+
 
 ---
 
