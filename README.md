@@ -65,19 +65,18 @@ The project is organized into a clean, professional architecture optimized for G
 
 ```
 .
-# 📦 Upload these folders inside a 'Regression' folder in your Google Drive root (`MyDrive/Regression/`)
-├── data/               # 📊 Raw Datasets (train.csv, test.csv)
-├── hyperparameter_tuning/
-├── quantile_regression/
-├── probabilistic_distribution/
-├── probabilistic_distribution_card/
-├── hyperspherical_confidence_mapping_hcm/                 # (Added in v1.1)
-├── conformal_predictions_mapie_puncc/
-├── conformal_predictions_nexcp_adaptivecp_mfcs/
-├── conformal_predictions_adaptive_coverage_policies/       # (Added in v1.2)
-├── examples/                                               # 📁 Example Datasets (Added in v1.2)
-│
-└── README.md               # 🚀 Project Landing Page
+└── Regression/             # 📂 Main Project Folder (Upload this to MyDrive/)
+    ├── data/               # 📊 Raw Datasets (train.csv, test.csv)
+    ├── hyperparameter_tuning/
+    ├── quantile_regression/
+    ├── probabilistic_distribution/
+    ├── probabilistic_distribution_card/
+    ├── hyperspherical_confidence_mapping_hcm/
+    ├── conformal_predictions_mapie_puncc/
+    ├── conformal_predictions_nexcp_adaptivecp_mfcs/
+    ├── conformal_predictions_adaptive_coverage_policies/
+    ├── Regression/resources/          # 📚 Research Paper PDFs
+    └── examples/           # 📁 Example Datasets
 ```
 
 ---
@@ -91,7 +90,7 @@ To use this repository with your own data:
 1.  **Prepare your data**: You need a training set and a testing set.
 2.  **Format**: Ensure your files are in `.csv` format.
 3.  **Replace**:
-    *   Place your data in the `data/` directory.
+    *   Place your data in the `Regression/data/` directory.
 4.  **Configure**:
     *   **Column Names**: Open the notebooks in the respective folders and ensure the column names match your Dataset's target variable and features.
     *   **File Paths**: When running in Google Colab, paths are automatically handled relative to the root directory.
@@ -164,20 +163,18 @@ Learns data-dependent conformal coverage through a neural policy over calibratio
 
 ## 🚀 Getting Started (Colab-First)
 
-1.  **Open a notebook in Colab**:
-    Click any .ipynb file in this repository and use the **Open in Colab** button.
+1.  **Clone/Download the Repository**:
+    Download the project and identify the `Regression/` folder.
 
-2.  **Install dependencies from the notebook**:
-    Run the first cell to install required packages in Colab (for example: !pip install optuna mapie puncc).
+2.  **Upload to Google Drive**:
+    Upload the entire `Regression/` folder directly to your Google Drive root (`MyDrive/`).
 
-3.  **Upload your Dataset to Colab runtime storage**:
-    Upload your own `train.csv` and `test.csv` directly into the active Colab session.
+3.  **Open a notebook in Colab**:
+    Navigate to any `.ipynb` file within your Drive's `Regression/` folder and open it with Google Colab.
 
-4.  **Update notebook paths for Colab storage**:
-    Set file paths to point to your mounted Google Drive (for example: `/content/drive/MyDrive/Regression/data/train.csv`).
-
-5.  **Run notebooks in phase order**:
-    Execute notebooks following the **Repository Structure** sequence (Hyperparameter Tuning $\rightarrow$ Quantile/Probabilistic $\rightarrow$ Conformal Predictions).
+4.  **Run the Notebooks**:
+    *   The notebooks are pre-configured to mount your drive and look for data in `/content/drive/MyDrive/Regression/data/`.
+    *   Execute notebooks in phase order: **Hyperparameter Tuning** $\rightarrow$ **Quantile/Probabilistic** $\rightarrow$ **Conformal Predictions**.
 
 ---
 
@@ -185,10 +182,10 @@ Learns data-dependent conformal coverage through a neural policy over calibratio
 
 This project leverages state-of-the-art research in Uncertainty Quantification. Below are the key resources and research papers utilized in this pipeline:
 
-### 📖 Research Papers (PDFs available in `resources/`)
-*   **NEXCP (Non-Exchangeable Conformal Prediction)**: Barber, R. F., Candes, E. J., Ramdas, A., & Tibshirani, R. J. (2023). *Conformal prediction beyond exchangeability*. [Local PDF](resources/NEXCP_beyond_exchangeability.pdf) | [ArXiv](https://arxiv.org/abs/2202.13415)
-*   **Adaptive Conformal Prediction**: Gibbs, I., & Candes, E. (2021). *Adaptive conformal inference under distribution shift*. [Local PDF](resources/Adaptive_Conformal_Inference.pdf) | [ArXiv](https://arxiv.org/abs/2106.01682)
-*   **Conformal Prediction Tutorial**: Angelopoulos, A. N., & Bates, S. (2021). *A Gentle Introduction to Conformal Prediction and Distribution-Free Uncertainty Quantification*. [Local PDF](resources/Gentle_Intro_to_Conformal_Prediction.pdf) | [ArXiv](https://arxiv.org/abs/2107.07511)
+### 📖 Research Papers (PDFs available in `Regression/resources/`)
+*   **NEXCP (Non-Exchangeable Conformal Prediction)**: Barber, R. F., Candes, E. J., Ramdas, A., & Tibshirani, R. J. (2023). *Conformal prediction beyond exchangeability*. [Local PDF](Regression/resources/NEXCP_beyond_exchangeability.pdf) | [ArXiv](https://arxiv.org/abs/2202.13415)
+*   **Adaptive Conformal Prediction**: Gibbs, I., & Candes, E. (2021). *Adaptive conformal inference under distribution shift*. [Local PDF](Regression/resources/Adaptive_Conformal_Inference.pdf) | [ArXiv](https://arxiv.org/abs/2106.01682)
+*   **Conformal Prediction Tutorial**: Angelopoulos, A. N., & Bates, S. (2021). *A Gentle Introduction to Conformal Prediction and Distribution-Free Uncertainty Quantification*. [Local PDF](Regression/resources/Gentle_Intro_to_Conformal_Prediction.pdf) | [ArXiv](https://arxiv.org/abs/2107.07511)
 
 ### 🛠️ Libraries & Frameworks
 *   **MAPIE**: Model Agnostic Prediction Interval Estimator. [GitHub](https://github.com/scikit-learn-contrib/MAPIE)
