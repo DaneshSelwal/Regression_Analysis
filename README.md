@@ -65,18 +65,12 @@ The project is organized into a clean, professional architecture optimized for G
 
 ```
 .
-└── Regression/             # 📂 Main Project Folder (Upload this to MyDrive/)
-    ├── data/               # 📊 Raw Datasets (train.csv, test.csv)
-    ├── hyperparameter_tuning/
-    ├── quantile_regression/
-    ├── probabilistic_distribution/
-    ├── probabilistic_distribution_card/
-    ├── hyperspherical_confidence_mapping_hcm/
-    ├── conformal_predictions_mapie_puncc/
-    ├── conformal_predictions_nexcp_adaptivecp_mfcs/
-    ├── conformal_predictions_adaptive_coverage_policies/
-    ├── Regression/resources/          # 📚 Research Paper PDFs
-    └── examples/           # 📁 Example Datasets
+├── Regression/             # 📂 Main Project Folder (Upload this to MyDrive/)
+│   ├── data/               # 📊 Raw Datasets (train.csv, test.csv)
+│   ├── hyperparameter_tuning/
+│   ├── ... (other phases)
+├── resources/              # 📚 Research Paper PDFs
+└── examples/               # 📁 Example Datasets
 ```
 
 ---
@@ -182,10 +176,10 @@ Learns data-dependent conformal coverage through a neural policy over calibratio
 
 This project leverages state-of-the-art research in Uncertainty Quantification. Below are the key resources and research papers utilized in this pipeline:
 
-### 📖 Research Papers (PDFs available in `Regression/resources/`)
-*   **NEXCP (Non-Exchangeable Conformal Prediction)**: Barber, R. F., Candes, E. J., Ramdas, A., & Tibshirani, R. J. (2023). *Conformal prediction beyond exchangeability*. [Local PDF](Regression/resources/NEXCP_beyond_exchangeability.pdf) | [ArXiv](https://arxiv.org/abs/2202.13415)
-*   **Adaptive Conformal Prediction**: Gibbs, I., & Candes, E. (2021). *Adaptive conformal inference under distribution shift*. [Local PDF](Regression/resources/Adaptive_Conformal_Inference.pdf) | [ArXiv](https://arxiv.org/abs/2106.01682)
-*   **Conformal Prediction Tutorial**: Angelopoulos, A. N., & Bates, S. (2021). *A Gentle Introduction to Conformal Prediction and Distribution-Free Uncertainty Quantification*. [Local PDF](Regression/resources/Gentle_Intro_to_Conformal_Prediction.pdf) | [ArXiv](https://arxiv.org/abs/2107.07511)
+### 📖 Research Papers (PDFs available in `resources/`)
+*   **NEXCP (Non-Exchangeable Conformal Prediction)**: Barber, R. F., Candes, E. J., Ramdas, A., & Tibshirani, R. J. (2023). *Conformal prediction beyond exchangeability*. [Local PDF](resources/NEXCP_beyond_exchangeability.pdf) | [ArXiv](https://arxiv.org/abs/2202.13415)
+*   **Adaptive Conformal Prediction**: Gibbs, I., & Candes, E. (2021). *Adaptive conformal inference under distribution shift*. [Local PDF](resources/Adaptive_Conformal_Inference.pdf) | [ArXiv](https://arxiv.org/abs/2106.01682)
+*   **Conformal Prediction Tutorial**: Angelopoulos, A. N., & Bates, S. (2021). *A Gentle Introduction to Conformal Prediction and Distribution-Free Uncertainty Quantification*. [Local PDF](resources/Gentle_Intro_to_Conformal_Prediction.pdf) | [ArXiv](https://arxiv.org/abs/2107.07511)
 
 ### 🛠️ Libraries & Frameworks
 *   **MAPIE**: Model Agnostic Prediction Interval Estimator. [GitHub](https://github.com/scikit-learn-contrib/MAPIE)
