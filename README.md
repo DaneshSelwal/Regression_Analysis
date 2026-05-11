@@ -65,7 +65,7 @@ The project is organized into a clean, professional architecture optimized for G
 
 ```
 .
-# 📦 Upload these folders to Google Drive
+# 📦 Upload these folders inside a 'Regression' folder in your Google Drive root (`MyDrive/Regression/`)
 ├── data/               # 📊 Raw Datasets (train.csv, test.csv)
 ├── hyperparameter_tuning/
 ├── quantile_regression/
@@ -174,7 +174,7 @@ Learns data-dependent conformal coverage through a neural policy over calibratio
     Upload your own `train.csv` and `test.csv` directly into the active Colab session.
 
 4.  **Update notebook paths for Colab storage**:
-    Set file paths to Colab runtime locations (for example: /content/train.csv and /content/test.csv).
+    Set file paths to point to your mounted Google Drive (for example: `/content/drive/MyDrive/Regression/data/train.csv`).
 
 5.  **Run notebooks in phase order**:
     Execute notebooks following the **Repository Structure** sequence (Hyperparameter Tuning $\rightarrow$ Quantile/Probabilistic $\rightarrow$ Conformal Predictions).

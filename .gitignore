@@ -36,3 +36,4 @@ Thumbs.db:encryptable
 *.jpg
 *.jpeg
 # *.xlsx
+mail/
