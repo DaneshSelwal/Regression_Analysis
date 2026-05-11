@@ -178,6 +178,29 @@ Learns data-dependent conformal coverage through a neural policy over calibratio
 
 5.  **Run notebooks in phase order**:
     Execute notebooks following the **Repository Structure** sequence (Hyperparameter Tuning $\rightarrow$ Quantile/Probabilistic $\rightarrow$ Conformal Predictions).
+
+---
+
+## 📚 Resources & References
+
+This project leverages state-of-the-art research in Uncertainty Quantification. Below are the key resources and research papers utilized in this pipeline:
+
+### 📖 Research Papers (PDFs available in `resources/`)
+*   **NEXCP (Non-Exchangeable Conformal Prediction)**: Barber, R. F., Candes, E. J., Ramdas, A., & Tibshirani, R. J. (2023). *Conformal prediction beyond exchangeability*. [Local PDF](resources/NEXCP_beyond_exchangeability.pdf) | [ArXiv](https://arxiv.org/abs/2202.13415)
+*   **Adaptive Conformal Prediction**: Gibbs, I., & Candes, E. (2021). *Adaptive conformal inference under distribution shift*. [Local PDF](resources/Adaptive_Conformal_Inference.pdf) | [ArXiv](https://arxiv.org/abs/2106.01682)
+*   **Conformal Prediction Tutorial**: Angelopoulos, A. N., & Bates, S. (2021). *A Gentle Introduction to Conformal Prediction and Distribution-Free Uncertainty Quantification*. [Local PDF](resources/Gentle_Intro_to_Conformal_Prediction.pdf) | [ArXiv](https://arxiv.org/abs/2107.07511)
+
+### 🛠️ Libraries & Frameworks
+*   **MAPIE**: Model Agnostic Prediction Interval Estimator. [GitHub](https://github.com/scikit-learn-contrib/MAPIE)
+*   **PUNCC**: Predictive UNCertainty Calibration and Conformalization. [GitHub](https://github.com/deel-ai/puncc)
+*   **Adaptive Coverage Policies (ACP)**: [GitHub](https://github.com/GauthierE/adaptive-coverage-policies)
+*   **HCM (Hyperspherical Confidence Mapping)**: [GitHub](https://github.com/Abandoned-Puppy/HCM)
+*   **Optuna**: Bayesian Hyperparameter Optimization. [Website](https://optuna.org/)
+*   **NGBoost**: Natural Gradient Boosting for Probabilistic Prediction. [Project Page](https://stanfordmlgroup.github.io/projects/ngboost/)
+*   **PGBM**: Probabilistic Gradient Boosting Machines. [GitHub](https://github.com/elephaint/pgbm)
+*   **Treeffuser / CARD**: Generative Diffusion for Regression. [GitHub](https://github.com/blei-lab/treeffuser)
+*   **IBUG**: Instant Bootstrapping for Uncertainty Guidelines. [GitHub](https://github.com/jjbrophy47/ibug)
+
 ---
 
 <sub>This repository is a collaborative project developed under the guidance of Dr. Mahesh Pal by Prakriti Bisht and Danesh Selwal.</sub>
